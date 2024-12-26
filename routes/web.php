@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,31 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\DoctorController;
+
+// Ruta principal para la página de inicio
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home'); // Carga la vista 'home.blade.php'
+})->name('home');
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Rutas RESTful para pacientes
+Route::resource('patients', PatientController::class);
 
-Route::get('/appointments', function () {
-    return view('appointments');
-});
+// Rutas RESTful para doctores
+Route::resource('doctors', DoctorController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 
-Route::get('/citas', function () {
-    return view('citas');
-});
 
-Route::get('/nuevoUsuario', function () {
-    return view('nuevoUsuario');
-});
-
-Route::get('/agendar', function () {
-    return view('agendar');
-});
 
