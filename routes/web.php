@@ -17,6 +17,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AdministrativoController;
 
 // Ruta principal para la página de inicio
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::resource('patients', PatientController::class);
 // Rutas RESTful para doctores
 Route::resource('doctors', DoctorController::class);
 
+Route::resource('administrativos', AdministrativoController::class);
 
 
 

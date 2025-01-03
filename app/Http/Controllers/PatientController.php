@@ -23,17 +23,27 @@ class PatientController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
+{
+    return view('patients.create');
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:patients',
+        'phone' => 'required',
+        'address' => 'required',
+    ]);
+
+    Patient::create($validated);
+    return redirect()->route('patients.index')->with('success', 'Paciente creado con éxito.');
+}
+
 
     /**
      * Display the specified resource.
@@ -46,24 +56,36 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function edit(Patient $patient)
+{
+    return view('patients.edit', compact('patient'));
+}
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, Patient $patient)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:patients,email,' . $patient->id,
+        'phone' => 'required',
+        'address' => 'required',
+    ]);
+
+    $patient->update($validated);
+    return redirect()->route('patients.index')->with('success', 'Paciente actualizado con éxito.');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy(Patient $patient)
+{
+    $patient->delete();
+    return redirect()->route('patients.index')->with('success', 'Paciente eliminado con éxito.');
+}
+
 }
