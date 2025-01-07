@@ -26,7 +26,10 @@
                         <a class="nav-link" href="#">Agendar Cita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('patients.index') }}">Pacientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('doctors.index') }}">Doctores</a>
                     </li>
                 </ul>
             </div>

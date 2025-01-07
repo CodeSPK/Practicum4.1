@@ -31,26 +31,6 @@ Route::resource('patients', PatientController::class);
 // Rutas RESTful para doctores
 Route::resource('doctors', DoctorController::class);
 
-Route::resource('administrativos', AdministrativoController::class);
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+//Route::resource('administrativos', AdministrativoController::class);
 
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-use App\Http\Controllers\AuthController;
-
-Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-
-
-
-
-// Ruta para el formulario de registro
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-
-// Ruta para procesar el registro
-Route::post('/register', [RegisterController::class, 'register']);
