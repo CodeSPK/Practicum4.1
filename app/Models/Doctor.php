@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,5 +8,6 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'specialty'];
+    protected $table = 'doctors'; // Nombre explícito de la tabla
+    protected $fillable = ['name', 'email', 'specialty']; // Campos asignables
 }

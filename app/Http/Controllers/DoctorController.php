@@ -11,11 +11,14 @@ class DoctorController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        // Obtener todos los doctores
-        $doctors = Doctor::all();
-        return view('doctors.index', compact('doctors'));
-    }
+{
+    // Obtener todos los doctores
+    $doctors = Doctor::all();
+
+    // Pasar los datos a la vista
+    return view('doctors.index', compact('doctors'));
+}
+
 
     /**
      * Show the form for creating a new resource.

@@ -1,33 +1,37 @@
 @extends('layouts.master')
 
-@section('title', 'Listado de Doctores')
-
 @section('content')
-    <h2>Listado de Doctores</h2>
+<div class="container mt-5">
+    <h1>Lista de Doctores</h1>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <a href="{{ route('doctors.create') }}" class="btn btn-primary mb-3">Agregar Doctor</a>
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Specialty</th>
+                <th>Nombre</th>
                 <th>Email</th>
-                <th>Actions</th>
+                <th>Especialidad</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($doctors as $doctor)
                 <tr>
                     <td>{{ $doctor->name }}</td>
-                    <td>{{ $doctor->specialty }}</td>
                     <td>{{ $doctor->email }}</td>
+                    <td>{{ $doctor->specialty }}</td>
                     <td>
-                        <!-- Botón para editar -->
-                        <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-warning btn-sm">Edit</a>
-
-                        <!-- Botón para eliminar -->
+                        <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -38,7 +42,5 @@
             @endforelse
         </tbody>
     </table>
-
-    <a href="{{ route('doctors.create') }}" class="btn btn-success">Agregar Doctor</a>
+</div>
 @endsection
-

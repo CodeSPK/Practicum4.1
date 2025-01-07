@@ -1,17 +1,25 @@
 @extends('layouts.master')
 
-@section('title', 'Listado de Pacientes')
-
 @section('content')
-    <h2>Listado de Pacientes</h2>
-    <table class="table table-striped">
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Pacientes</h2>
+        <a href="{{ route('patients.create') }}" class="btn btn-primary">Agregar Paciente</a>
+    </div>
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Actions</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -20,25 +28,23 @@
                     <td>{{ $patient->name }}</td>
                     <td>{{ $patient->email }}</td>
                     <td>{{ $patient->phone }}</td>
-                    <td>{{ $patient->address }}</td>
                     <td>
-                        <!-- Agregar botones para editar o eliminar -->
-                        <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('patients.edit', $patient) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <form action="{{ route('patients.destroy', $patient) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">No hay pacientes registrados.</td>
+                    <td colspan="4" class="text-center">No hay pacientes registrados.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
-
-    <a href="{{ route('patients.create') }}" class="btn btn-success">Agregar Paciente</a>
+</div>
 @endsection
+
 
