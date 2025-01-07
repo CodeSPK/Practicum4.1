@@ -1,32 +1,69 @@
-/* Archivo: resources/css/styles.css */
-
 body {
-    background-color: #f8f9fa;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
 }
 
-.navbar {
-    background-color: #007bff;
-}
-
-.navbar-brand {
+.hero {
+    background: url('../images/hospital-bg.jpg') no-repeat center center / cover;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
     font-weight: bold;
 }
 
-.card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.hero p {
+    font-size: 1.25rem;
 }
 
-.btn-primary {
-    background-color: #007bff;
+.services {
+    margin: 40px 0;
+}
+
+.card {
     border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 footer {
-    margin-top: 20px;
     background-color: #343a40;
     color: white;
-    padding: 10px 0;
-    text-align: center;
+    padding: 20px 0;
+}
+
+footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.login-section {
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.login-section h2 {
+    margin-bottom: 20px;
+}
+
+.login-card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
 }
